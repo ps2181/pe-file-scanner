@@ -20,7 +20,7 @@ def scan(file_path):
 
     csv_file_path = os.path.join(path, "output.csv")
     
-    print(path)
+    #print(path)
     key = ["cnt_dll", "cnt_nondll","str","entpy","no_DD","EX","init_data","uninit_data","dll_char","digi_sign","md5","arch","size_code","major_linker","minor_linker"]
     value = [0,0]
 
@@ -31,7 +31,7 @@ def scan(file_path):
         
         for entry in import_table:
             imported_dll = entry.dll.decode()
-            print("Imported library:", imported_dll)
+            #print("Imported library:", imported_dll)
 
             if imported_dll.lower().endswith(".dll"):
                 value[0] += 1
