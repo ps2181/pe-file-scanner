@@ -1,0 +1,52 @@
+scanner:
+  workers: 8
+  timeout: 30
+  min_string_length: 4
+  batch_size: 100
+
+ml_model:
+  path: models/malware_detector.pkl
+  threshold: 0.75
+  feature_columns:
+    - cnt_dll
+    - cnt_nondll
+    - str
+    - entpy
+    - no_DD
+    - EX
+    - init_data
+    - uninit_data
+    - dll_char
+    - digi_sign
+    - arch
+    - size_code
+    - major_linker
+    - minor_linker
+
+clustering:
+  algorithm: dbscan
+  eps: 0.5
+  min_samples: 5
+  normalize: true
+
+reporting:
+  format: html
+  output_dir: reports/
+  generate_charts: true
+  include_timestamps: true
+
+triage:
+  enabled: true
+  high_priority_threshold: 0.9
+  medium_priority_threshold: 0.7
+  auto_categorize: true
+
+database:
+  enabled: false
+  type: sqlite
+  path: data/scans.db
+
+virustotal:
+  enabled: false
+  api_key: YOUR_API_KEY_HERE
+  rate_limit: 4
